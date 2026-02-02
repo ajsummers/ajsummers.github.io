@@ -1,11 +1,15 @@
-# Pump Level PID Project
+---
+layout: home
+title: Portfolio
+---
 
-This site documents the design, implementation, and testing of a closed-loop
-pump-controlled water level system using an ESP32.
+## Projects
 
-## Sections
-- [Overview](overview)
-- [Hardware](hardware)
-- [Firmware](firmware)
-- [Control](control)
-- [Results](results)
+### Pump Level PID
+ESP32-based closed-loop water level control with logging + tuning.
+
+- [Overview](/pump-level-pid/overview)
+- [Hardware](/pump-level-pid/hardware)
+- [Firmware](/pump-level-pid/firmware)
+- [Control](/pump-level-pid/control)
+- [Results](/pump-level-pid/results)
