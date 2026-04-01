@@ -18,6 +18,7 @@ So, long story short, I decided to take matters into my own hands, and teach mys
 - At least be remotely related to chemical engineering concepts (transport phenomena / reactions),
 - Simple/safe enough for one person to build and operate, and
 - Complex enough that the solution would not be trivial.
+
 There were many examples online of PID loops used to control an unstable self-balancing robot. But this was a mechanical process in nature. PID temperature control would be too high powered, and could be unsafe to run over long periods.
 
 After some thought, I finally settled on a process that involved two tanks, a passive backflow line between the tanks, and an active line for pumping water specifically from Tank 2 into Tank 1. The controlled variable would be the differential height between the tanks. This would require level measurements on each tank in order to get the process variable. The passive line is added specifically to make the process dynamic. Without the passive line, the solution does not require a PID loop - just pump water from Tank 2 into Tank 1 until the setpoint is reached. The passive line instantly makes the process more complicated. Any time the differential height is above zero, water will be flowing through the passive line back to Tank 2. As the differential height increases, the backflow also increases. To me, this process seemed complex enough that a PID control loop or some other active control would be required to stabilize the differential height at a specific setpoint.
