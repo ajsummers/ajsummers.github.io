@@ -112,6 +112,17 @@ PORTB |= (1 << 5)
 | ADCH | `0x79` | ADC Results, High Byte | [219](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219) |
 | DIDR0 | `0x7E` | Digital Input Disable | [220](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=220) |
 
+The ADC registers are more complicated than PORTB and DDRB. First we will look at ADCSRA. Below is a table showing the relevant bits in ADCSRA and how we will use them.
+
+| Bit | Designation | Our setting | Purpose/Comments |
+| :--: | :--: | :--: | :-- |
+| 7 | ADEN | 1 | ADC Enable |
+| 6 | ADSC | 0 -> 1 | ADC Start Conversion |
+| 5 | ADATE | 0 | ADC Auto Trigger Enable |
+| 4 | ADIF | 0 | ADC Interrupt Flag |
+| 3 | ADIE | 0 | ADC Interrupt Enable |
+| 2:0 | ADPS2:0 | 111 | ADC Prescaler Select Bits |
+
 #### USART0 registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
