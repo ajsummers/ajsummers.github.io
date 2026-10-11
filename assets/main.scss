@@ -361,7 +361,8 @@ code {
   h1 {
     max-width: 15ch;
     margin-bottom: 1.25rem;
-    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    font-size: clamp(2rem, 8.5vw, 4.25rem);
+    overflow-wrap: break-word;
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -0.035em;
