@@ -59,14 +59,14 @@ Defining the types of registers we will use.
 
 In this project, we will make use of a few classes of registers. These are provided in the table below. The reference page numbers are in reference to the [ATmega328p datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
 
-##### Output registers
+#### Output registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
 | DDR\[B,C,D\] | `0x24`, `0x27`, `0x2A` | Port _ Data Direction Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
 | PORT\[B,C,D\] | `0x25`, `0x28`, `0x2B` | Port _ Data Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
 
-##### ADC registers
+#### ADC registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
@@ -75,6 +75,17 @@ In this project, we will make use of a few classes of registers. These are provi
 | ADCL | `0x78` | ADC Result, Low Byte | [219](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219) |
 | ADCH | `0x79` | ADC Results, High Byte | [219](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219) |
 | DIDR0 | `0x7E` | Digital Input Disable | [220](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=220) |
+
+#### USART0 registers
+| Register(s) | Memory Address(es) | Purpose | Ref P# |
+| :--: | :--: | :-- | :--: |
+| UCSR0A | `0xC0` | USART Control and Status Register n A | [159](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=159) |
+| UCSR0B | `0xC1` | USART Control and Status Register n B | [160](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=160) |
+| UCSR0C | `0xC2` | USART Control and Status Register n C | [161](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=161) |
+| UBRR0L | `0xC4` | Baud divisor, low byte | [162](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=162) |
+| UBRR0H | `0xC5` | Baud divisor, high byte | [162](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=162) |
+| UDR0 | `0xC6` | Data | [159](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=159) |
+
 
 In this 
 {% comment %}
