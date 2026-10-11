@@ -66,6 +66,12 @@ In this project, we will make use of a few classes of registers. These are provi
 | DDR\[B,C,D\] | `0x24`, `0x27`, `0x2A` | Port _ Data Direction Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
 | PORT\[B,C,D\] | `0x25`, `0x28`, `0x2B` | Port _ Data Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
 
+Later in this project, we will be using the temperature sensor to drive an LED response. To do this, we will need to make use of output registers. The PORT_/DDR_ registers allow us to send digital output through specific pins of the ATmega328. PORTB and DDRB correspond to the PB pins. If we look at the ATmega328 pinout, we can see this corresponds to pins 9-10,14-19 (PB0-7)
+
+[![ATmega328 pinout diagram](https://components101.com/sites/default/files/component_pin/ATMega328P-Pinout.png)](https://components101.com/microcontrollers/atmega328p-pinout-features-datasheet)
+
+In this project, we will be starting by using the PB5 pin (19).
+
 #### ADC registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
