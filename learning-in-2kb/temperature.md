@@ -59,10 +59,20 @@ Defining the types of registers we will use.
 
 In this project, we will make use of a few classes of registers. These are provided in the table below. The reference page numbers are in reference to the [ATmega328p datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
 
-| Class | Memory Address(es) | Purpose | Ref P# |
+#### Output registers
+| Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
-| DDR\[B,C,D\] | 0x24, 0x27, 0x2A | Port _ Data Direction Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
-| PORT\[B,C,D\] | 0x25, 0x28, 0x2B | Port _ Data Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
+| DDR\[B,C,D\] | `0x24`, `0x27`, `0x2A` | Port _ Data Direction Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
+| PORT\[B,C,D\] | `0x25`, `0x28`, `0x2B` | Port _ Data Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
+
+#### ADC registers
+| Register(s) | Memory Address(es) | Purpose | Ref P# |
+| :--: | :--: | :-- | :--: |
+| ADCSRA | `0x7A` | ADC Control Register | [218](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=218) |
+| ADMUX | `0x7C` | ADC Reference and Channel | [217](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=217) |
+| ADCL | `0x78` | ADC Result, Low Byte | [219](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219) |
+| ADCH | `0x79` | ADC Results, High Byte | [219](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219) |
+| DIDR0 | `0x7E` | Digital Input Disable | [220](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=220) |
 
 In this 
 {% comment %}
