@@ -82,6 +82,14 @@ code {
   border-color: var(--line);
 }
 
+// Code blocks a little smaller than body text; inline code is unchanged.
+pre,
+pre > code {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  tab-size: 4;
+}
+
 // Minima's syntax colours are for a light background, so dark mode gets
 // its own set.
 @media (prefers-color-scheme: dark) {
