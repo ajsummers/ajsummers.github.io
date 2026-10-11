@@ -50,7 +50,7 @@ Parts list, wiring diagram or photo, and which pins the sensor and any outputs c
 ## Bare-metal I/O
 
 {: .placeholder-bar}
-*Why use bare metal programming instead of Arduino IDE or other frameworks?* Using bare metal, we can keep strict control over our memory budget and sampling timing. It also opens up access to peripheral features Arduino hides, like the internal temperature sensor. Bare metal skills also transfer more broadly to other classes of chips (e.g. STM32) and to production firmware. Finally, while I am currently using the ATmega328 chip, which is not significantly constrained in memory, I plan to later implement these findings on a much more constrained chip, like an ATtiny85. This chip has significantly less space, and we will need to cut as much overhead as reasonably possible to get ML models to share some of the space.
+<b>Why use bare metal programming instead of Arduino IDE or other frameworks?</b> Using bare metal, we can keep strict control over our memory budget and sampling timing. It also opens up access to peripheral features Arduino hides, like the internal temperature sensor. Bare metal skills also transfer more broadly to other classes of chips (e.g. STM32) and to production firmware. Finally, while I am currently using the ATmega328 chip, which is not significantly constrained in memory, I plan to later implement these findings on a much more constrained chip, like an ATtiny85. This chip has significantly less space, and we will need to cut as much overhead as reasonably possible to get ML models to share some of the space.
 
 ### Registers
 
