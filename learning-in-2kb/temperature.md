@@ -80,9 +80,9 @@ Driving a pin directly, for example the onboard LED.
 #define DDRB *((volatile unsigned char*) 0x24)
 
 void delay(volatile long time){
-  while (time != 0) {
-    time--;
-  }
+	while (time != 0) {
+		time--;
+	}
 }
 
 int main() {
