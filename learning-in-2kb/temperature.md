@@ -123,6 +123,49 @@ The ADC registers are more complicated than PORTB and DDRB. First we will look a
 | 3 | ADIE | 0 | ADC Interrupt Enable |
 | 2:0 | ADPS2:0 | 111 | ADC Prescaler Select Bits |
 
+We only use a few bits in this register. ADEN enables ADC, which we obviously want to set to 1. ADSC is kept at 0 until we are ready to read the ADC input. Then we manually set it to 1, and the hardware will set it back to 0 once the ADC input is read. We don't use any auto triggers or interrupts here, so ADATE, ADIF, and ADIE are all set to 0. Finally, we have the prescaler to scale ADC clock based on the chip clock. We choose a scaler of 128, for an ADC clock of 125 kHz. This corresponds to a value of 111 for the ADPS2:0 bits.
+
+The next register we touch is the ADMUX register:
+
+| Bit | Designation | Our setting | Purpose/Comments |
+| :--: | :--: | :--: | :-- |
+| 7:6 | REFS | 01 | Sets reference for ADC, in this case 5 V |
+| 5 | ADLAR | 0 | Result right-adjusted |
+| 4 | unused | -- | -- |
+| 3:0 | MUX | 0000 | input = ADC0 |
+
+Setting REFS to 01 sets the ADC reference to 5 V. Setting MUX to 0000 sets the input to ADC0 (PC0). Finally, we use DIDR0 to disconnect A0's digital input buffer:
+
+| Bit | Designation | Our setting | Purpose/Comments |
+| :--: | :--: | :--: | :-- |
+| 0 | ADC0D | 1 | Disconnects A0 digital input buffer |
+
+In this case, we are manually setting all bits for these registers. So we directly set them rather than using bitwise operators:
+```c
+#define ADCSRA *((volatile unsigned char*) 0x7A)
+#define ADMUX *((volatile unsigned char*) 0x7C)
+#define DIDR0 *((volatile unsigned char*) 0x7E)
+
+ADCSRA = (1 << 7) | 111  // 0b10000111, 0x87
+ADMUX = (1 << 6)         // 0b01000000, 0x40
+DIDR0 = 1                // 0b00000001, 0x01
+```
+
+We are also using two of the registers as input. The actual ADC input comes in ADCH (high byte) and ADCL (low byte). The ADCH and ADCL combine for a total of 10 bits. This corresponds to an integer max value of 1023 (2^10 - 1). See the image below.
+
+Placeholder
+
+We can first see that all of these bits are read-only. This makes sense, as these are input values captured from the analog pin. We can also see how ADLAR in ADMUX affects the configuration of ADCH and ADCL. With ADLAR set to 0, ADCL contains 8 of the input bits. With ADLAR set to 1, ADCH contains 8 of the input bits. We set ADLAR to 0, so the top configuration is what we're working with. So to grab the ADC input, we would use the following code:
+```c
+#define ADCH *((volatile unsigned char*) 0x79)
+#define ADCL *((volatile unsigned char*) 0x78)
+
+uint8_t hi = ADCH;
+uint8_t lo = ADCL;
+
+uint16_t adc_in = (hi << 8) | lo;
+```
+
 #### USART0 registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
