@@ -3,17 +3,27 @@
 
 @import "minima";
 
+// Every item gets a leading separator; the list is shifted left by one
+// separator width and the nav clips it, so no line starts with a stray dot.
+.pump-nav {
+  overflow: hidden;
+  padding: 2px;
+  margin-bottom: $spacing-unit;
+}
+
 .pump-nav ul {
   list-style: none;
-  margin: 0 0 $spacing-unit;
+  margin: 0 0 0 -1.5em;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
 }
 
-.pump-nav li + li::before {
+.pump-nav li::before {
   content: "·";
-  margin: 0 0.5em;
+  display: inline-block;
+  width: 1.5em;
+  text-align: center;
   color: $grey-color;
 }
 
