@@ -61,8 +61,8 @@ In this project, we will make use of a few classes of registers. These are provi
 
 | Class | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
-| DDR\[B,C,D\] | 0x24,0x27,0x2A | Port _ Data Direction Register | 72-73 |
-| PORT\[B,C,D\] | 0x25,0x28,0x2B | Port _ Data Register | 72-73 |
+| DDR\[B,C,D\] | 0x24, 0x27, 0x2A | Port _ Data Direction Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
+| PORT\[B,C,D\] | 0x25, 0x28, 0x2B | Port _ Data Register | [72-73](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72) |
 
 In this 
 {% comment %}
