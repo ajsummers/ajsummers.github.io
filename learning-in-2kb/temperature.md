@@ -63,7 +63,26 @@ How the DDRx, PORTx and PINx registers control a pin's direction, output and inp
 Driving a pin directly, for example the onboard LED.
 
 ```c
-// Placeholder: digital output code
+#define PORTB *((volatile unsigned char*) 0x25)
+#define DDRB *((volatile unsigned char*) 0x24)
+
+void delay(volatile long time){
+  while (time != 0) {
+    time--;
+  }
+}
+
+int main() {
+	DDRB |= (1 << 5);
+	
+	while (1) {
+		PORTB |= (1 << 5);
+		delay(1000000);
+		
+		PORTB &= ~(1 << 5);
+		delay(1000000);
+	}	
+}
 ```
 
 ### Analog input
