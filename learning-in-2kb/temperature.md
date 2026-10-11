@@ -68,13 +68,12 @@ In this project, we will make use of a few classes of registers. These are provi
 
 Later in this project, we will be using the temperature sensor to drive an LED response. To do this, we will need to make use of output registers. The PORT_/DDR_ registers allow us to send digital output through specific pins of the ATmega328. PORTB and DDRB correspond to the PB pins. If we look at the ATmega328 pinout, we can see this corresponds to pins 9-10,14-19 (PB0-7):
 
-[<img src="https://components101.com/sites/default/files/component_pin/ATMega328P-Pinout.png" alt="ATmega328 pinout diagram" width="400"/>](https://components101.com/microcontrollers/atmega328p-pinout-features-datasheet)
+[<img src="/learning-in-2kb/images/atmega328p-pinout.png" alt="ATmega328 pinout diagram" width="400"/>](https://components101.com/microcontrollers/atmega328p-pinout-features-datasheet)
 
 
 In this project, we will be starting by using the PB5 pin (19). As we can see in the datasheet, this corresponds to the 5th bit in both DDRB and PORTB:
 
-{.placeholder-todo}
-Add DDRB and PORTB images from datasheet.
+![PORTB and DDRB register bit layouts from the ATmega328P datasheet](/learning-in-2kb/images/portb-ddrb-registers.png)
 
 #### ADC registers
 
