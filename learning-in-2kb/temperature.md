@@ -73,7 +73,7 @@ Later in this project, we will be using the temperature sensor to drive an LED r
 
 In this project, we will be starting by using the PB5 pin (19). As we can see in the datasheet, this corresponds to the 5th bit in both DDRB and PORTB:
 
-![PORTB and DDRB register bit layouts from the ATmega328P datasheet](/learning-in-2kb/images/portb-ddrb-registers.png)
+[![PORTB and DDRB register bit layouts from the ATmega328P datasheet](/learning-in-2kb/images/portb-ddrb-registers.png)](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72)
 
 #### ADC registers
 
