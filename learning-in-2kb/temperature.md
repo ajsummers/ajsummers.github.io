@@ -75,6 +75,32 @@ In this project, we will be starting by using the PB5 pin (19). As we can see in
 
 [![PORTB and DDRB register bit layouts from the ATmega328P datasheet](/learning-in-2kb/images/portb-ddrb-registers.png)](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72)
 
+In the following code, we define PORTB and DDRB, then set PB5 as an output pin, and finally, set the digital output for PB5 to HIGH, or on.
+```c
+#define PORTB *((volatile unsigned char*) 0x25)
+#define DDRB *((volatile unsigned char*) 0x24)
+
+// The following 3 lines all perform the same task
+DDRB = (1 << 5)    // 1 bit shifted 5 times, resulting in 00100000
+DDRB = 0b00100000  // Same value given directly as binary
+DDRB = 0x20        // Value provided as hex
+
+// For PORTB, we'll use the most readable of the three
+PORTB = (1 << 5)
+```
+
+{.placeholder-note}
+It's important that we understand what's happening in this code. Assignments like `PORTB = (1 << 5)` set the pin we're using (PB5) to HIGH, but also sets all other PB pins to LOW. To set only PB5 as an output and to HIGH, we can use bitwise operations:
+```c
+\\ setting PB5 as output
+DDRB = DDBR | (1 << 5)
+\\ or equivalently,
+DDBR |= (1 << 5)
+
+\\ setting PB5 output to HIGH
+PORTB |= (1 << 5)
+```
+
 #### ADC registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
