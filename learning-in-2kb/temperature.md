@@ -77,6 +77,7 @@ In this project, we will make use of a few classes of registers. These are provi
 | DIDR0 | `0x7E` | Digital Input Disable | [220](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=220) |
 
 #### USART0 registers
+
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
 | UCSR0A | `0xC0` | USART Control and Status Register n A | [159](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=159) |
