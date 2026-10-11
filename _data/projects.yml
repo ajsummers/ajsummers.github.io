@@ -1,0 +1,32 @@
+# Projects shown on the home page, in order. The first one is featured.
+- title: Learning in 2 KB
+  url: /learning-in-2kb/
+  kind: Series
+  status: Up next
+  summary: TinyML on an ATmega328P, the chip on an Arduino Uno. Each part adds a sensor and a slightly bigger model, building toward a dye-concentration sensor.
+  specs:
+    - ATmega328P
+    - 2 KB SRAM
+    - 32 KB flash
+    - 16 MHz
+  parts:
+    - title: Temperature
+      url: /learning-in-2kb/temperature
+      status: Up next
+      summary: A first model end to end. Collect sensor data, train on a laptop, run inference on the chip.
+    - title: Motion
+      status: Planned
+      summary: Accelerometer input with analog outputs.
+    - title: Dye concentration
+      status: Goal
+      summary: Predict the concentration of different dyes from an LED-based optical sensor.
+
+- title: Pump Level PID
+  url: /pump-level-pid/overview
+  kind: Project
+  status: Paused
+  summary: Two tanks, a pump and a passive backflow line, held at a set level difference by a PID loop on an ESP32.
+  specs:
+    - ESP32
+    - PID control
+    - Level sensing

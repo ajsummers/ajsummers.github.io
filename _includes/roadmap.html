@@ -1,0 +1,9 @@
+<ol class="roadmap">
+  {%- for part in include.parts %}
+  <li{% if part.status == "Goal" %} class="is-goal"{% endif %}>
+    <span class="roadmap-status">{{ part.status }}</span>
+    <h4>{% if part.url %}<a href="{{ part.url | relative_url }}">{{ part.title }}</a>{% else %}{{ part.title }}{% endif %}</h4>
+    <p>{{ part.summary }}</p>
+  </li>
+  {%- endfor %}
+</ol>

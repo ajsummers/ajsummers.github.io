@@ -1,0 +1,65 @@
+---
+layout: home
+---
+{%- assign featured = site.data.projects | first -%}
+{%- assign others = site.data.projects | shift -%}
+
+<section class="hero">
+  <div class="wrapper">
+    <p class="hero-name">Alex Summers</p>
+    <h1>From process models to microcontrollers.</h1>
+    <p class="hero-lede">My PhD was machine learning for engineering processes. These projects cover the part I missed: sensors, microcontrollers and control loops.</p>
+    <div class="hero-actions">
+      <a class="button button--primary" href="#projects">See projects</a>
+      <a class="button button--ghost" href="https://github.com/ajsummers">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrapper">
+    <h2 class="section-title">Projects</h2>
+
+    <article class="series">
+      <div class="series-intro">
+        <p class="pills">
+          <span class="pill">{{ featured.kind }}</span>
+          <span class="pill pill--accent">{{ featured.status }}</span>
+        </p>
+        <h3><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
+        <p>{{ featured.summary }}</p>
+        <ul class="specs">
+          {%- for spec in featured.specs %}
+          <li>{{ spec }}</li>
+          {%- endfor %}
+        </ul>
+        <a class="arrow-link" href="{{ featured.url | relative_url }}">Follow the series <span aria-hidden="true">→</span></a>
+      </div>
+      {% include roadmap.html parts=featured.parts %}
+    </article>
+
+    {%- for project in others %}
+    <article class="project-row">
+      <div>
+        <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+        <p>{{ project.summary }}</p>
+      </div>
+      <div class="project-meta">
+        <span class="pill">{{ project.status }}</span>
+        <ul class="specs">
+          {%- for spec in project.specs %}
+          <li>{{ spec }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrapper">
+    <h2 class="section-title">About</h2>
+    <p>I'm a chemical engineer (B.S. and PhD) who works on machine learning and active learning for engineering processes. My research never needed hardware, so I'm teaching myself the embedded side here, one project at a time.</p>
+  </div>
+</section>
