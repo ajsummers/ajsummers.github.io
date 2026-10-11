@@ -91,13 +91,14 @@ PORTB = (1 << 5)
 
 {.placeholder-note}
 It's important that we understand what's happening in this code. Assignments like `PORTB = (1 << 5)` set the pin we're using (PB5) to HIGH, but also sets all other PB pins to LOW. To set only PB5 as an output and to HIGH, we can use bitwise operations:
+
 ```c
-\\ setting PB5 as output
+// setting PB5 as output
 DDRB = DDBR | (1 << 5)
-\\ or equivalently,
+// or equivalently,
 DDBR |= (1 << 5)
 
-\\ setting PB5 output to HIGH
+// setting PB5 output to HIGH
 PORTB |= (1 << 5)
 ```
 
