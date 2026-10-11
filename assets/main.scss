@@ -1,0 +1,23 @@
+---
+---
+
+@import "minima";
+
+.pump-nav ul {
+  list-style: none;
+  margin: 0 0 $spacing-unit;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pump-nav li + li::before {
+  content: "·";
+  margin: 0 0.5em;
+  color: $grey-color;
+}
+
+.pump-nav a[aria-current="page"] {
+  color: $text-color;
+  font-weight: 700;
+}
