@@ -54,8 +54,21 @@ Parts list, wiring diagram or photo, and which pins the sensor and any outputs c
 
 ### Registers
 
+{: .placeholder-plain}
+Defining the types of registers we will use.
+
+In this project, we will make use of a few classes of registers. The first of these is the <b> data direction register (DDR) </b> class.
+
+| Class | Memory Address(es) | Purpose |
+| :--: | :--: | :-- |
+| DDR\[A-D\] | 0x24 | Provides ... |
+| PORT\[A-D\] | 0x25 | Provides ... |
+
+In this 
+{% comment %}
 {: .placeholder-tint}
 How the DDRx, PORTx and PINx registers control a pin's direction, output and input.
+{% endcomment %}
 
 ### Digital output
 
