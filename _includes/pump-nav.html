@@ -1,8 +1,13 @@
-<p>
-  <a href="/">← Portfolio</a> ·
-  <a href="/pump-level-pid/overview">Overview</a> ·
-  <a href="/pump-level-pid/hardware">Hardware</a> ·
-  <a href="/pump-level-pid/firmware">Firmware</a> ·
-  <a href="/pump-level-pid/control">Control</a> ·
-  <a href="/pump-level-pid/results">Results</a>
-</p>
+{%- assign current = page.url | remove: ".html" -%}
+<nav class="pump-nav" aria-label="Pump Level PID sections">
+  <ul>
+    {%- unless page.url == "/" %}
+    <li><a href="/"><span aria-hidden="true">← </span>Portfolio</a></li>
+    {%- endunless %}
+    <li><a href="/pump-level-pid/overview"{% if current == "/pump-level-pid/overview" %} aria-current="page"{% endif %}>Overview</a></li>
+    <li><a href="/pump-level-pid/hardware"{% if current == "/pump-level-pid/hardware" %} aria-current="page"{% endif %}>Hardware</a></li>
+    <li><a href="/pump-level-pid/firmware"{% if current == "/pump-level-pid/firmware" %} aria-current="page"{% endif %}>Firmware</a></li>
+    <li><a href="/pump-level-pid/control"{% if current == "/pump-level-pid/control" %} aria-current="page"{% endif %}>Control</a></li>
+    <li><a href="/pump-level-pid/results"{% if current == "/pump-level-pid/results" %} aria-current="page"{% endif %}>Results</a></li>
+  </ul>
+</nav>
