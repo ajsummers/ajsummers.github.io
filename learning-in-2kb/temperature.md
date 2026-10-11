@@ -89,7 +89,7 @@ DDRB = 0x20        // Value provided as hex
 PORTB = (1 << 5)
 ```
 
-{.placeholder-note}
+{: .placeholder-note}
 It's important that we understand what's happening in this code. Assignments like `PORTB = (1 << 5)` set the pin we're using (PB5) to HIGH, but also sets all other PB pins to LOW. To set only PB5 as an output and to HIGH, we can use bitwise operations:
 
 ```c
