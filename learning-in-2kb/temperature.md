@@ -57,12 +57,12 @@ Parts list, wiring diagram or photo, and which pins the sensor and any outputs c
 {: .placeholder-plain}
 Defining the types of registers we will use.
 
-In this project, we will make use of a few classes of registers. The first of these is the <b> data direction register (DDR) </b> class.
+In this project, we will make use of a few classes of registers. These are provided in the table below. The reference page numbers are in reference to the [ATmega328p datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
 
-| Class | Memory Address(es) | Purpose |
-| :--: | :--: | :-- |
-| DDR\[A-D\] | 0x24 | Provides ... |
-| PORT\[A-D\] | 0x25 | Provides ... |
+| Class | Memory Address(es) | Purpose | Ref P# |
+| :--: | :--: | :-- | :--: |
+| DDR\[B,C,D\] | 0x24,0x27,0x2A | Port _ Data Direction Register | 72-73 |
+| PORT\[B,C,D\] | 0x25,0x28,0x2B | Port _ Data Register | 72-73 |
 
 In this 
 {% comment %}
