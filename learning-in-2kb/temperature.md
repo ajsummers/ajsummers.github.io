@@ -155,15 +155,19 @@ We are also using two of the registers as input. The actual ADC input comes in A
 
 Placeholder
 
-We can first see that all of these bits are read-only. This makes sense, as these are input values captured from the analog pin. We can also see how ADLAR in ADMUX affects the configuration of ADCH and ADCL. With ADLAR set to 0, ADCL contains 8 of the input bits. With ADLAR set to 1, ADCH contains 8 of the input bits. We set ADLAR to 0, so the top configuration is what we're working with. So to grab the ADC input, we would use the following code:
+We can first see that all of these bits are read-only. This makes sense, as these are input values captured from the analog pin. We can also see how ADLAR in ADMUX affects the configuration of ADCH and ADCL. With ADLAR set to 0, ADCL contains 8 of the input bits. With ADLAR set to 1, ADCH contains 8 of the input bits. We set ADLAR to 0, so the top configuration is what we're working with. Note that to get a new ADC reading, you must first set bit 6 of ADCSRA (ADSC) to 1. This starts the conversion. The ADSC bit is then flipped to 0 when the ADC input is ready. So to grab the ADC input, we would use the following code:
 ```c
+#define ADCSRA *((volatile unsigned char*) 0x7A)
 #define ADCH *((volatile unsigned char*) 0x79)
 #define ADCL *((volatile unsigned char*) 0x78)
 
-uint8_t hi = ADCH;
-uint8_t lo = ADCL;
+ADCSRA |= (1 << 6)          // Set the ADSC bit to 1
+while (ADCSRA & (1 << 6));  // wait for hardware to clear ADSC bit
 
-uint16_t adc_in = (hi << 8) | lo;
+uint8_t hi = ADCH;          // Get high byte
+uint8_t lo = ADCL;          // Get low byte
+
+uint16_t adc_in = (hi << 8) | lo;  // Combine high and low byte into integer
 ```
 
 #### USART0 registers
