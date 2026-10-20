@@ -22,8 +22,17 @@ blank line in between.
   A paragraph with no {: ...} line is normal body text.
 
 Code: wrap it in ```c or ```python fences for syntax colouring.
+  To make a code block foldable, put one of these lines directly above the
+  opening ``` fence:
+    {: .fold-code}                    foldable, open when the page loads
+    {: .fold-code .folded}            foldable, folded when the page loads
+    {: .fold-code data-label="ADC setup"}   custom bar text (default is
+                                      "C code" / "Python code"); works with
+                                      .folded too
+  A code block with no {: ...} line is a normal, always-visible block.
+
 Headings: ## gets a divider line and appears in "On this page"; ### is a
-subsection.
+subsection. All ## to #### headings can be folded by clicking them.
 {% endcomment %}
 
 <p class="series-back"><a href="/learning-in-2kb/"><span aria-hidden="true">← </span>Learning in 2 KB</a></p>

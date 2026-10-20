@@ -345,8 +345,77 @@ table {
   }
 }
 
+// Foldable code blocks ({: .fold-code}), wrapped in <details> by fold.js
+.code-fold {
+  margin-bottom: $spacing-unit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.5rem 0.9rem;
+    background-color: var(--surface);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    list-style: none;
+    cursor: pointer;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // Same chevron as the heading toggles
+    &::before {
+      content: "";
+      flex: none;
+      width: 0.45em;
+      height: 0.45em;
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
+      transform: translateY(-0.12em) rotate(45deg);
+      transition: transform 0.15s ease;
+    }
+
+    &:hover::before {
+      border-color: var(--accent);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+  }
+
+  &:not([open]) > summary::before {
+    transform: rotate(-45deg);
+  }
+
+  &[open] > summary {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .code-fold-lines {
+    margin-left: auto;
+    color: var(--muted);
+  }
+
+  // The code block sits flush inside the frame.
+  .highlighter-rouge,
+  .highlight,
+  pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .fold-toggle::before {
+  .fold-toggle::before,
+  .code-fold > summary::before {
     transition: none;
   }
 }

@@ -51,6 +51,32 @@
     });
   }
 
+  // Code blocks marked {: .fold-code} get a clickable bar that folds them.
+  // Adding .folded starts them folded; data-label="..." sets the bar text.
+  var languages = { c: "C", cpp: "C++", python: "Python", py: "Python", bash: "Shell", sh: "Shell" };
+  root.querySelectorAll(".highlighter-rouge.fold-code").forEach(function (block) {
+    var details = document.createElement("details");
+    details.className = "code-fold";
+    details.open = !block.classList.contains("folded");
+
+    var lang = (/language-(\w+)/.exec(block.className) || [])[1];
+    var label = document.createElement("span");
+    label.className = "code-fold-label";
+    label.textContent = block.getAttribute("data-label") ||
+      (lang ? (languages[lang] || lang) + " code" : "Code");
+
+    var code = block.querySelector("code");
+    var lines = code ? code.textContent.replace(/\n$/, "").split("\n").length : 0;
+    var count = document.createElement("span");
+    count.className = "code-fold-lines";
+    count.textContent = lines + (lines === 1 ? " line" : " lines");
+
+    var summary = document.createElement("summary");
+    summary.append(label, count);
+    block.before(details);
+    details.append(summary, block);
+  });
+
   wrap(root, 2);
 
   var toggles = root.querySelectorAll(".fold-toggle");
