@@ -17,4 +17,13 @@
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
+  {%- if page.math -%}
+  <script>
+    window.MathJax = {
+      tex: { tags: 'ams' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {%- endif -%}
+</head>
 </head>
