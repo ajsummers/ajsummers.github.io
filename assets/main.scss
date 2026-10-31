@@ -447,6 +447,174 @@ table {
   }
 }
 
+// Section pages: "Part 1: Temperature / Section 2 of 7" line at the top
+.part-context {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.part-context-count {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+// Previous / next links at the bottom of a section page
+.part-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 44rem;
+  margin: 3rem 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+
+  @include media-query($on-palm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.part-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.part-nav-next {
+  grid-column: 2;
+  text-align: right;
+
+  @include media-query($on-palm) {
+    grid-column: 1;
+  }
+}
+
+.part-nav-dir {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.part-nav-title {
+  color: var(--text);
+  font-weight: 600;
+}
+
+// Section cards on a part's overview page
+.section-list {
+  list-style: none;
+  margin: 0 0 $spacing-unit;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.section-card {
+  display: grid;
+  grid-template-columns: 2rem 1fr 9.5rem;
+  grid-template-areas: "num text image";
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &,
+  &:visited {
+    color: var(--text);
+  }
+
+  &:hover {
+    border-color: var(--accent);
+    background-color: var(--surface);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @include media-query($on-palm) {
+    grid-template-columns: 2rem 1fr;
+    grid-template-areas:
+      "num text"
+      "image image";
+    gap: 0.75rem 1rem;
+  }
+}
+
+.section-card-num {
+  grid-area: num;
+  align-self: start;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.section-card-text {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.section-card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.section-card-summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.section-card-image {
+  grid-area: image;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 4px);
+  // Datasheet figures have white backgrounds, so keep them on white.
+  background-color: #fff;
+  object-fit: contain;
+
+  // Full-width on phones, so a wider shape keeps cards from getting tall.
+  @include media-query($on-palm) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.section-card-image--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+  background-color: var(--surface);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
 .series-back {
   margin-bottom: 1.25rem;
   font-size: 0.95rem;

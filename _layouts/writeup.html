@@ -1,7 +1,29 @@
 ---
 layout: page
 ---
+{%- comment -%}
+  Pages with "part: <name>" in their front matter that appear in
+  _data/<name>.yml get a "Section N of M" line at the top and
+  previous/next links at the bottom.
+{%- endcomment -%}
+{%- assign section_index = nil -%}
+{%- if page.part -%}
+  {%- assign part = site.data[page.part] -%}
+  {%- assign current = page.url | remove: ".html" -%}
+  {%- for section in part.sections -%}
+    {%- if section.url == current -%}{%- assign section_index = forloop.index0 -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 <div class="writeup">
+  {%- if section_index != nil %}
+  <p class="part-context">
+    <a href="{{ part.url | relative_url }}"><span aria-hidden="true">← </span>{{ part.title }}</a>
+    <span class="part-context-count">Section {{ section_index | plus: 1 }} of {{ part.sections.size }}</span>
+  </p>
+  {%- endif %}
   {{ content }}
 </div>
+{%- if section_index != nil %}
+{% include part-nav.html part=part index=section_index %}
+{%- endif %}
 <script src="{{ "/assets/fold.js" | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

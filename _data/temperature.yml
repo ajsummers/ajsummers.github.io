@@ -1,0 +1,40 @@
+# Part 1: Temperature. The sections are listed in reading order; this list
+# builds the section cards on the Part 1 page and the previous/next links at
+# the bottom of each section page.
+#
+# To add a section: add an entry here, then create the matching .md file in
+# learning-in-2kb/temperature/ with "part: temperature" in its front matter.
+# "image" is optional; leave it out and the card shows a placeholder.
+title: "Part 1: Temperature"
+url: /learning-in-2kb/temperature/
+sections:
+  - title: Bare-metal registers
+    url: /learning-in-2kb/temperature/registers
+    image: /learning-in-2kb/images/portb-ddrb-registers.png
+    summary: Why skip the Arduino libraries, and the output, ADC and serial registers this project relies on.
+
+  - title: Blink, sense, log
+    url: /learning-in-2kb/temperature/blink-sense-log
+    image: /learning-in-2kb/images/atmega328p-pinout.png
+    summary: The registers put to work. Drive an LED, read the temperature sensor through the ADC, and stream readings over serial.
+
+  - title: Collecting training data
+    url: /learning-in-2kb/temperature/data
+    image: /learning-in-2kb/images/adc-readings-plot.jpg
+    summary: How readings were logged, the conditions covered, and what the dataset looks like.
+
+  - title: Training the model
+    url: /learning-in-2kb/temperature/training
+    summary: Choosing a model small enough for a 2 KB budget, then training and validating it on a laptop.
+
+  - title: On-chip inference
+    url: /learning-in-2kb/temperature/on-chip
+    summary: Exporting the trained model to C, running it on the ATmega328P, and checking the memory budget.
+
+  - title: Results
+    url: /learning-in-2kb/temperature/results
+    summary: How the on-chip predictions compare with the reference readings.
+
+  - title: Lessons and next steps
+    url: /learning-in-2kb/temperature/whats-next
+    summary: What this part taught, and how it leads into Part 2.

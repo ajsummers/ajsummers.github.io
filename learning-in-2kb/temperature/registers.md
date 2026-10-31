@@ -1,74 +1,24 @@
 ---
-title: "Part 1: Temperature"
+title: Bare-metal registers
 layout: writeup
+part: temperature
 ---
-
-{% comment %}
-How to style a paragraph: put one of these lines directly above it, with no
-blank line in between.
-
-  Placeholders (draft text, delete the line once the paragraph is written):
-    {: .placeholder}        dashed box
-    {: .placeholder-bar}    accent bar on the left
-    {: .placeholder-tint}   tinted block
-    {: .placeholder-todo}   "TODO" tag
-    {: .placeholder-plain}  grey italics
-
-  Finished writing:
-    {: .lead}               larger opening paragraph, once at the top
-    {: .note}               callout box; start it with a bold label such as
-                            **Note**, **Tip** or **Warning** on its own line
-
-  A paragraph with no {: ...} line is normal body text.
-
-Code: wrap it in ```c or ```python fences for syntax colouring.
-  To make a code block foldable, put one of these lines directly above the
-  opening ``` fence:
-    {: .fold-code}                    foldable, open when the page loads
-    {: .fold-code .folded}            foldable, folded when the page loads
-    {: .fold-code data-label="ADC setup"}   custom bar text (default is
-                                      "C code" / "Python code"); works with
-                                      .folded too
-  A code block with no {: ...} line is a normal, always-visible block.
-
-Headings: ## gets a divider line and appears in "On this page"; ### is a
-subsection. All ## to #### headings can be folded by clicking them.
-{% endcomment %}
-
-<p class="series-back"><a href="/learning-in-2kb/"><span aria-hidden="true">← </span>Learning in 2 KB</a></p>
-
-{: .lead}
-Intro: what this part builds, and why temperature is a good first project.
-
-<ul class="specs">
-  <li>ATmega328P</li>
-  <li>Temperature sensor</li>
-  <li>Bare-metal C</li>
-</ul>
-
-**On this page**
-
-* TOC
-{:toc}
-
-## Hardware
-
-{: .placeholder}
-Parts list, wiring diagram or photo, and which pins the sensor and any outputs connect to.
-
-## Bare-metal I/O
+{% comment %}Formatting guide: _writing-guide.md in the repo root.{% endcomment %}
 
 {: .placeholder-bar}
 <b>Why use bare metal programming instead of Arduino IDE or other frameworks?</b><br><br> Using bare metal, we can keep strict control over our memory budget and sampling timing. It also opens up access to peripheral features Arduino hides, like the internal temperature sensor. Bare metal skills also transfer more broadly to other classes of chips (e.g. STM32) and to production firmware. Finally, while I am currently using the ATmega328 chip, which is not significantly constrained in memory, I plan to later implement these findings on a much more constrained chip, like an ATtiny85. This chip has significantly less space, and we will need to cut as much overhead as reasonably possible to get ML models to share some of the space.
-
-### Registers
 
 {: .placeholder-plain}
 Defining the types of registers we will use.
 
 In this project, we will make use of a few classes of registers. These are provided in the table below. The reference page numbers are in reference to the [ATmega328p datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
 
-#### Output registers
+**On this page**
+
+* TOC
+{:toc}
+
+## Output registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
@@ -114,7 +64,7 @@ DDBR |= (1 << 5)
 PORTB |= (1 << 5)
 ```
 
-#### ADC registers
+## ADC registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
@@ -182,7 +132,7 @@ uint8_t lo = ADCL;          // Get low byte
 uint16_t adc_in = (hi << 8) | lo;  // Combine high and low byte into integer
 ```
 
-#### USART0 registers
+## USART0 registers
 
 | Register(s) | Memory Address(es) | Purpose | Ref P# |
 | :--: | :--: | :-- | :--: |
@@ -199,112 +149,3 @@ In this
 {: .placeholder-tint}
 How the DDRx, PORTx and PINx registers control a pin's direction, output and input.
 {% endcomment %}
-
-### Digital output
-
-{: .placeholder-todo}
-Driving a pin directly, for example the onboard LED.
-
-```c
-#define PORTB *((volatile unsigned char*) 0x25)
-#define DDRB *((volatile unsigned char*) 0x24)
-
-void delay(volatile long time){
-	while (time != 0) {
-		time--;
-	}
-}
-
-int main() {
-	DDRB |= (1 << 5);
-	
-	while (1) {
-		PORTB |= (1 << 5);
-		delay(1000000);
-		
-		PORTB &= ~(1 << 5);
-		delay(1000000);
-	}	
-}
-```
-
-### Analog input
-
-{: .placeholder-plain}
-Configuring the ADC and reading the temperature sensor.
-
-```c
-// Placeholder: ADC setup and read code
-```
-
-{: .note}
-**Note**
-Placeholder: a side note, such as a datasheet detail that's easy to miss.
-
-### Serial output
-
-{: .placeholder-todo}
-Setting up the UART to stream readings to a laptop for logging.
-
-```c
-// Placeholder: UART code
-```
-
-## Collecting training data
-
-{: .placeholder-bar}
-How readings were logged, the conditions covered, and what the dataset looks like.
-
-```python
-# Placeholder: data logging script
-```
-
-<iframe src="/assets/adc_readings4.html" style="width:100%; aspect-ratio:2/1; border:none;"></iframe>
-
-## Training the model
-
-{: .placeholder}
-The model choice (neural network or another statistical learning model), why it fits a 2 KB budget, and how it was trained and validated.
-
-```python
-# Placeholder: training code
-```
-
-{: .note}
-**Tip**
-Placeholder: a practical tip, such as a setting that made training easier.
-
-## Running the model on the chip
-
-### Exporting the model
-
-{: .placeholder-tint}
-Turning trained weights or coefficients into C arrays, and keeping them in flash with PROGMEM.
-
-```c
-// Placeholder: exported weights
-```
-
-### Inference
-
-{: .placeholder-todo}
-The inference code, and any fixed-point or float trade-offs.
-
-```c
-// Placeholder: inference code
-```
-
-### Memory budget
-
-{: .placeholder-plain}
-Flash and SRAM used by the program, the model and the buffers.
-
-## Results
-
-{: .placeholder}
-How the on-chip predictions compare with the reference, with plots or tables.
-
-## What's next
-
-{: .placeholder-bar}
-What this part taught, and how it leads into Part 2.

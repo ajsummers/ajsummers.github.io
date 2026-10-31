@@ -1,0 +1,18 @@
+<ol class="section-list">
+  {%- for section in include.part.sections %}
+  <li>
+    <a class="section-card" href="{{ section.url | relative_url }}">
+      <span class="section-card-num">{{ forloop.index }}</span>
+      <span class="section-card-text">
+        <span class="section-card-title">{{ section.title }}</span>
+        <span class="section-card-summary">{{ section.summary }}</span>
+      </span>
+      {%- if section.image %}
+      <img class="section-card-image" src="{{ section.image | relative_url }}" alt="" loading="lazy">
+      {%- else %}
+      <span class="section-card-image section-card-image--empty">Image to come</span>
+      {%- endif %}
+    </a>
+  </li>
+  {%- endfor %}
+</ol>

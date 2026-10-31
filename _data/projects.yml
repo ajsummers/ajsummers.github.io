@@ -11,7 +11,7 @@
     - 16 MHz
   parts:
     - title: Temperature
-      url: /learning-in-2kb/temperature
+      url: /learning-in-2kb/temperature/
       status: Up next
       summary: A first model end to end. Collect sensor data, train on a laptop, run inference on the chip.
     - title: Motion

@@ -1,0 +1,31 @@
+{%- assign sections = include.part.sections -%}
+{%- assign i = include.index -%}
+{%- assign last = sections.size | minus: 1 -%}
+<nav class="part-nav" aria-label="{{ include.part.title }} sections">
+  {%- if i > 0 %}
+  {%- assign prev_i = i | minus: 1 %}
+  {%- assign prev = sections[prev_i] %}
+  <a class="part-nav-link part-nav-prev" href="{{ prev.url | relative_url }}" rel="prev">
+    <span class="part-nav-dir"><span aria-hidden="true">← </span>Previous</span>
+    <span class="part-nav-title">{{ prev.title }}</span>
+  </a>
+  {%- else %}
+  <a class="part-nav-link part-nav-prev" href="{{ include.part.url | relative_url }}">
+    <span class="part-nav-dir"><span aria-hidden="true">← </span>Back to</span>
+    <span class="part-nav-title">{{ include.part.title }}</span>
+  </a>
+  {%- endif %}
+  {%- if i < last %}
+  {%- assign next_i = i | plus: 1 %}
+  {%- assign next = sections[next_i] %}
+  <a class="part-nav-link part-nav-next" href="{{ next.url | relative_url }}" rel="next">
+    <span class="part-nav-dir">Next<span aria-hidden="true"> →</span></span>
+    <span class="part-nav-title">{{ next.title }}</span>
+  </a>
+  {%- else %}
+  <a class="part-nav-link part-nav-next" href="{{ include.part.url | relative_url }}">
+    <span class="part-nav-dir">Back to<span aria-hidden="true"> →</span></span>
+    <span class="part-nav-title">{{ include.part.title }}</span>
+  </a>
+  {%- endif %}
+</nav>
