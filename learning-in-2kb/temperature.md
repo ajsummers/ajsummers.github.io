@@ -259,7 +259,7 @@ How readings were logged, the conditions covered, and what the dataset looks lik
 # Placeholder: data logging script
 ```
 
-<iframe src="/assets/adc_readings.html" width="100%" height=400 style="border:none;"></iframe>
+<iframe src="/assets/adc_readings.html" style="border:none;"></iframe>
 
 ## Training the model
 
