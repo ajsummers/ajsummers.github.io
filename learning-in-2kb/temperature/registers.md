@@ -123,6 +123,8 @@ We can first see that all of these bits are read-only. This makes sense, as thes
 #define ADCH *((volatile unsigned char*) 0x79)
 #define ADCL *((volatile unsigned char*) 0x78)
 
+#include <stdint.h>         // Required to use uint8_t, uint16_t, ... types
+
 ADCSRA |= (1 << 6)          // Set the ADSC bit to 1
 while (ADCSRA & (1 << 6));  // wait for hardware to clear ADSC bit
 
