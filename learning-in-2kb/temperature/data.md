@@ -9,7 +9,8 @@ math: true
 {: .placeholder-bar}
 How readings were logged, the conditions covered, and what the dataset looks like.
 
-Controller output it
+Controller output is:
+
 $$
 u(t) = K_p\, e(t) + K_i \int_0^t e(\tau)\, d\tau + K_d \frac{de(t)}{dt}
 \label{eq:pid}
